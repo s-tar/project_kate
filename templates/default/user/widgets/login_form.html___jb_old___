@@ -1,0 +1,12 @@
+<div class="login-form">
+    <form class="form ajax user-login-form" action="/user/login/native" method="post">
+    <div class="row"><input class="phone" type="text" name="phone" placeholder="Телефон (380xxxxxxxxx)"/><div class="icon"></div></div>
+    <div class="row"><input class="password" type="password" name="password" placeholder="Пароль"/><div class="icon"></div></div>
+    <div class="row" style="text-align: center">
+        <input class="button" type="submit" value="Войти"/>
+    </div>
+    </form>
+    <a class="link" style="float: left; display: none" href="/password/recovery">Забыли пароль?</a>
+    <br/>
+    <a class="link" style="" href="/registration">Регистрация</a>
+</div>

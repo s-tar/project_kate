@@ -1,0 +1,27 @@
+<!doctype html>
+<!--[if lte IE 8]><html class="lteie8"><![endif]-->
+<!--[if gt IE 8]><!--><html><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>{{t('site.main_title')}}</title>
+	{{widget("seo", wrap=False)}}
+</head>
+<body class="transition-fix">
+    {% include 'popup' %}
+    {% include 'header' %}
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    {% include 'footer' %}
+</body>
+<link rel="stylesheet" href="/static/css/materialize.min.css"/>
+<link rel="stylesheet" href="/static/css/main.min.css"/>
+<link rel="stylesheet" href="/static/css/font-awesome.min.css"/>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/user.js"></script>
+<script src="/static/js/materialize.min.js"></script>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?97"></script>
+</html>

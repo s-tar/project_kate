@@ -1,0 +1,80 @@
+@import "mixins"
+
+header .login-frame
+  float: right
+  .links
+    display: inline-block
+    color: #f3f3f3
+    vertical-align: middle
+    padding: 0px 10px
+    a
+      margin: 0 5px
+  .icon
+    padding: 0px
+    position: relative
+    top: 0
+    left: 0
+    z-index: 1
+    color: #ffffff
+    margin-left: 5px
+    display: inline-block
+    cursor: pointer
+    width: 32px
+    height: 32px
+    text-align: center
+    +border-radius(50px)
+    +transition(background .3s ease, color .3s ease)
+    background-color: #efefef
+    border: 0px
+    vertical-align: middle
+    font-size: 14px
+    line-height: 32px
+    outline: none
+
+    &.login-fb
+      color: #3c5a99
+      border: 1px solid #3c5a99
+      background-color: #ffffff
+      &:not(.busy):hover
+        color: #ffffff
+        background-color: #3c5a99
+      &:not(.busy):active
+        color: #ffffff
+        border-color: #2e4576
+        background-color: #2e4576
+    &.login-vk
+      color: #3c5a99
+      border: 1px solid #4c75a3
+      background-color: #ffffff
+      &:not(.busy):hover
+        color: #ffffff
+        background-color: #4c75a3
+      &:not(.busy):active
+        color: #ffffff
+        border-color: #3a5a7e
+        background-color: #3a5a7e
+
+header .user-profile
+  float: right
+  height: 32px
+  .user-icon
+    height: 32px
+    width: 32px
+  .info
+    text-align: right
+    padding: 0px 10px
+    .name
+      color: inherit
+      text-decoration: none
+  .user-icon, .info
+    float: right
+
+.user-registration-form
+  width: 320px
+.user-icon
+  .photo
+    img
+      width: 100%
+      height: 100%
+
+

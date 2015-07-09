@@ -1,0 +1,15 @@
+<form class="dictionary-form form ajax" action="/admin/dictionary/save" method="post">
+    <input type="hidden" name="id" value="{{dictionary.id or ''}}">
+    <input type='hidden' name="translation_language" value="{{translator.get_translation_language().lng_code}}"/>
+
+    <div style="float: right;width: 500px">
+    <div class="row">
+        <div class="title">Код: {{dictionary.code}}</div>
+        <textarea name="text" placeholder="Перевод" style="resize:vertical;" rows="8">{{dictionary.t('text', True) or ''}}</textarea>
+    </div>
+    </div>
+    <div class="row" style="clear: both;">
+        <input type="button" onclick="popup.hide()" value="Отмена"/>
+        <input type="button" class="submit" value="Сохранить"/>
+    </div>
+</form>

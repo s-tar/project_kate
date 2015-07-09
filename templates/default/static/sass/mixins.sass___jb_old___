@@ -1,0 +1,51 @@
+$color-blue: #69D2E7
+$color-orange: #F38630
+
+=box-shadow($radius)
+  -webkit-box-shadow: $radius
+  -moz-box-shadow:    $radius
+  -ms-box-shadow:     $radius
+  box-shadow:         $radius
+
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius:    $radius
+  -ms-border-radius:     $radius
+  border-radius:         $radius
+
+=transition($value...)
+  -webkit-transition: $value
+  -moz-transition: $value
+  -ms-transition: $value
+  -o-transition: $value
+  transition: $value
+
+=transform($value...)
+  transform: $value
+  -webkit-transform: $value
+  -o-transform: $value
+  -moz-transform: $value
+
+=animation-iteration-count($value...)
+  animation-iteration-count: $value
+  -webkit-animation-iteration-count: $value
+  -o-animation-iteration-count: $value
+  -moz-animation-iteration-count: $value
+
+.round
+  overflow: hidden
+  +border-radius(9999px)
+  
+@keyframes bounce
+  0%
+    +transform(translate(0, 0) scale(1.1,0.9))
+  15%
+    +transform(translate(0, 0) scale(0.95, 1.05))
+  25%, 75%
+    +transform(translate(0, -7.5px) scale(0.95, 1.05))
+  50%
+    +transform(translate(0, -10px)  scale(0.95, 1.05))
+  85%
+    +transform(translate(0, 0) scale(0.95, 1.05))
+  100%
+    +transform(translate(0, 0) scale(1.05,0.95))

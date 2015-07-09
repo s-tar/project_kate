@@ -1,0 +1,20 @@
+{% extends "admin/layout" %}
+{% block content %}
+<div class="header">
+    <div class="text">Страницы</div>
+</div>
+<div style="padding: 10px 9px">
+    <ul class="list">
+    {% for content in content_list %}
+        <li class="item" id="{{content.id}}">
+            <div style="float:left">
+            <a href="/admin/content/{{content.alias}}">
+                <span class="fa fa-file-text-o icon"></span>
+                <span class="name">{{content.t('name', True) or ''}}</span>
+            </a>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

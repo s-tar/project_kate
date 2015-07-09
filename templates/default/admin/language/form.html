@@ -1,0 +1,16 @@
+<form class="language-form form ajax ajax-submit" action="/admin/language/save" method="post" style="width: 400px">
+    <input type="hidden" name="lng_id" value="{{language.lng_id or ''}}"/>
+    <div class="row" style="padding-bottom: 9px;width: 20%">
+        <div class="title">Код:</div>
+        <input type="text" name="lng_code" value="{{language.lng_code|e_quotes or ''}}"/>
+    </div>
+    <div class="row" style="padding-bottom: 9px;width: 80%">
+        <div class="title">Имя:</div>
+        <input type="text" name="lng_name" value="{{language.lng_name|e_quotes or ''}}"/>
+    </div>
+    </div>
+    <div class="row" style="clear: both">
+        <input type="button" onclick="popup.hide()" value="Отмена"/>
+        <input type="button" class="submit" value="Сохранить"/>
+    </div>
+</form>

@@ -1,0 +1,104 @@
+{% extends "admin/layout" %}
+{% block content %}
+<div class="header">
+    <div class="text">
+        Контакты
+    </div>
+</div>
+<form class="form ajax contacts-save contacts" method="post" action="/admin/contacts/save">
+    <div class="row">
+        <div class="title">Адреса:</div>
+        {% for address in contacts.address %}
+        <div class="address">
+            <input type="hidden" name="address_id" value="{{address.cnt_id}}"/>
+            <input type="text" name="address" value="{{address.t('cnt_value', True)|e_quotes}}"/>
+            <input type="button" class="delete" value="&times;"/>
+        </div>
+        {% endfor %}
+        <div class="address new">
+            <input type="hidden" name="address_id" value=""/>
+            <input type="text" name="address" value=""  placeholder="Новый адрес"/>
+            <input type="button" class="delete" value="&times;"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="title">Телефоны:</div>
+        {% for phone in contacts.phone %}
+        <div class="phone">
+            <input type="hidden" name="phone_id" value="{{phone.cnt_id}}"/>
+            <input type="text" name="phone_num" placeholder="Номер" value="{{phone.t('cnt_value', True).split('|')[0]|e_quotes}}"/>
+            <input type="text" name="phone_description" placeholder="Описание" value="{{phone.t('cnt_value', True).split('|')[1]|e_quotes}}"/>
+            <input type="button" class="delete" value="&times;"/>
+        </div>
+        {% endfor %}
+        <div class="phone new">
+            <input type="hidden" name="phone_id" value=""/>
+            <input type="text" name="phone_num" placeholder="Номер" value=""/>
+            <input type="text" name="phone_description" placeholder="Описание" value=""/>
+            <input type="button" class="delete" value="&times;"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="title">Email:</div>
+        {% for email in contacts.email %}
+        <div class="email">
+            <input type="hidden" name="email_id" value="{{email.cnt_id}}"/>
+            <input type="text" name="email" value="{{email.t('cnt_value', True)}}"/>
+            <input type="button" class="delete" value="&times;"/>
+        </div>
+        {% endfor %}
+        <div class="email new">
+            <input type="hidden" name="email_id" value=""/>
+            <input type="text" name="email" value="" placeholder="Новый email"/>
+            <input type="button" class="delete" value="&times;"/>
+        </div>
+    </div>
+    <div class="row feedback">
+        <div class="title">Обратная связь:</div>
+        <input type="hidden" name="feedback_id" value="{{contacts.feedback[0].cnt_id if contacts.feedback is defined else ''}}"/>
+        <input type="text" name="feedback_email" placeholder="Email" value="{{contacts.feedback[0].t('cnt_value', True)|e_quotes if contacts.feedback is defined else ''}}"/>
+    </div>
+    <div class="row">
+        <div class="title">Карта:</div>
+        <input type="hidden" name="map_id" value="{{contacts.map[0].cnt_id if contacts.map is defined else ''}}"/>
+        <textarea rows="6" name="map">{{contacts.map[0].t('cnt_value', True) if contacts.map is defined else ''}}</textarea>
+    </div>
+    <div class="row sn">
+        <div class="title">Социальные сети:</div>
+        <div class="row vk">
+            <div class="icon fa fa-vk" title="VKontakte"></div>
+            <input type="hidden" name="sn.name" value="vk"/>
+            <input type="hidden" name="sn.id" value="{{contacts.vk[0].cnt_id if contacts.vk is defined else ''}}"/>
+            <input type="text"   name="sn.link" value="{{contacts.vk[0].t('cnt_value', True)|e_quotes if contacts.vk is defined else ''}}"/>
+        </div>
+        <div class="row facebook">
+            <div class="icon fa fa-facebook" title="Facebook"></div>
+            <input type="hidden" name="sn.name" value="facebook"/>
+            <input type="hidden" name="sn.id" value="{{contacts.facebook[0].cnt_id if contacts.facebook is defined else ''}}"/>
+            <input type="text"   name="sn.link" value="{{contacts.facebook[0].t('cnt_value', True)|e_quotes if contacts.facebook is defined else ''}}"/>
+        </div>
+        <div class="row twitter">
+            <div class="icon fa fa-twitter" title="Twitter"></div>
+            <input type="hidden" name="sn.name" value="twitter"/>
+            <input type="hidden" name="sn.id" value="{{contacts.twitter[0].cnt_id if contacts.twitter is defined else ''}}"/>
+            <input type="text"   name="sn.link" value="{{contacts.twitter[0].t('cnt_value', True)|e_quotes if contacts.twitter is defined else ''}}"/>
+        </div>
+        <div class="row google_plus">
+            <div class="icon fa fa-google-plus" title="Google+"></div>
+            <input type="hidden" name="sn.name" value="google_plus"/>
+            <input type="hidden" name="sn.id" value="{{contacts.google_plus[0].cnt_id if contacts.google_plus is defined else ''}}"/>
+            <input type="text"   name="sn.link" value="{{contacts.google_plus[0].t('cnt_value', True)|e_quotes if contacts.google_plus is defined else ''}}"/>
+        </div>
+        <div class="row live_journal" style="display: none">
+            <div class="icon"  title="Live Journal"></div>
+            <input type="hidden" name="sn.name" value="live_journal"/>
+            <input type="hidden" name="sn.id" value="{{contacts.live_journal[0].cnt_id if contacts.live_journal is defined else ''}}"/>
+            <input type="text"   name="sn.link" value="{{contacts.live_journal[0].t('cnt_value', True)|e_quotes if contacts.live_journal is defined else ''}}"/>
+        </div>
+    </div>
+    <div class="row">
+        <input type="button" class="button cancel" value="Отмена"/>
+        <input type="button" class="submit" value="Сохранить"/>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,8 @@
+<div class="header" style="min-height: 0px;margin: 0px"><div class="text">Меню</div></div>
+<ul class="menu">
+    {% for module in modules|sort(attribute='title') %}
+    {% if module.is_admin %}
+    <li><a href="{{module.index}}">{{module.title or module.name}}</a></li>
+    {% endif %}
+    {% endfor %}
+</ul>

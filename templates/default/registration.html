@@ -1,0 +1,20 @@
+{% extends "layout" %}
+{% block content %}
+<div class="subtitle">Заполните необходимые поля, чтобы подтвердить свое участие.</div>
+<div class="login-frame">
+    <form class="user-registration-form form ajax" action="/user/registrate" method="post" style="padding-top: 10px">
+        <div class="row">
+            <input class="phone" type="text" autocomplete="off" placeholder="Телефон (380xxxxxxxxx)" name="phone" value=""/><div class="icon"></div>
+        </div>
+        <div class="row">
+            <input class="password" type="password" autocomplete="off" placeholder="Пароль" name="password" value=""/><div class="icon"></div>
+        </div>
+        <div class="row">
+            <input class="code" type="text" autocomplete="off" placeholder="Код" name="code" value=""/><div class="icon"></div>
+        </div>
+        <div class="row" style="clear: both">
+            <input type="submit" class="button" value="Регистрация"/>
+        </div>
+    </form>
+</div>
+{% endblock %}

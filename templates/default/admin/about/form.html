@@ -1,0 +1,26 @@
+{% extends "admin/layout" %}
+{% block content %}
+<div class="header">
+    <div class="text">О себе</div>
+</div>
+<form class="form ajax ajax-submit about-save" method="post" action="/admin/about/save">
+    <div class="row">
+        <textarea class="editor" name="text" style="resize:vertical;" rows="15">{{about.t('text', True) or ''}}</textarea>
+    </div>
+    <div class="row">
+        <div class="title">Фотографии:</div>
+        <div class="file-uploader">
+            <div class="placeholder">Перетащите фото сюда или кликните для загрузки</div>
+            <div class="files">
+                {% for photo in photos %}
+                <div class="file" data-id="{{photo.id}}" data-visible="{{1 if photo.visible else 0}}" data-src="{{photo.get_url()}}"></div>
+                {% endfor%}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <input type="button" value="Отменить" onclick="window.location.reload()"/>
+        <input type="button" class="submit-button" value="Сохранить"/>
+    </div>
+</form>
+{% endblock %}

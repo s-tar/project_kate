@@ -1,0 +1,17 @@
+{% if user == None %}
+<div class="login-frame">
+    <div class="links"><a class="user-registration" href="#" >Регистрация</a> | <a class="user-login-native" href="#">Вход</a></div>
+    <button class="icon login-fb user-login-fb" ><span class="fa fa-facebook"></span></button>
+    <button class="icon login-vk user-login-vk" ><span class="fa fa-vk"></span></button>
+</div>
+{% else %}
+<div class="user-profile">
+    <div class="user-icon round">
+        <div class="photo"><a href="/profile/id{{user.id}}"><img src="{{user.photo_s or '/static/img/no-photo.png'}}"/></a></div>
+    </div>
+    <div class="info">
+        <a class="name" href="/profile/id{{user.id}}">{{user.name or ''}}</a><br/>
+        <a class="user-logout" href="#">Выход</a>
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,31 @@
+{% extends "admin/layout" %}
+{% block content %}
+<div class="header">
+    <div class="text">Новости</div>
+    <div class="icon-button new" style="float: right">
+        <a href="/admin/news/new">
+            <span class="fa fa-plus-circle icon"></span>
+            <span class="name">Новая Новость</span>
+        </a>
+    </div>
+</div>
+<ul route="/admin/news" class="list" style="padding: 20px">
+    {% for n in news %}
+    <li item_id="{{n.id}}" class="item {{'invisible' if not n.visible}}" >
+        <div style="float:left" class="title">
+        <a href="/admin/news/{{n.id}}" title="Дата публикации: {{(n.t('datetime', True)).strftime('%d.%m.%Y %H:%M')}}">
+            <span class="fa fa-file-text-o icon"></span>
+            <span class="name">{{n.t('title', True)}}</span>
+        </a>
+        </div>
+        <div class="edit-buttons" style="float:right">
+            <div class="button change-visibility">
+                <span class="visible fa fa-eye icon"></span>
+                <span class="invisible fa fa-eye-slash icon"></span>
+            </div>
+            <div class="button delete"><a href="#"><span class="fa fa-trash icon"></span></a></div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

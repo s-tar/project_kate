@@ -1,0 +1,18 @@
+{% extends "admin/layout" %}
+{% block content %}
+<div class="header">
+    <div class="text">Словарь</div>
+</div>
+<div style="padding: 10px 9px;width: 100%">
+    <ul route="/admin/dictionary" class="list dictionary-list" style="padding: 0px 10px">
+    {% for d in dictionary%}
+        <li class="item" item_id="{{d.id}}" title="{{d.code}}">
+            <a style="white-space: nowrap;max-height: 34px; width: 100%;overflow: hidden">
+            <span class="fa fa-language icon" ></span>
+            <span style="padding: 0px 10px" class="text">{{d.t('text', True)|e}}</span>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

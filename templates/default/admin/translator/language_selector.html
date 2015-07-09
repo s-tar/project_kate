@@ -1,0 +1,8 @@
+<div class="translator-language-selector">
+    <div class="item current">{{current.lng_name}} <span class="fa fa-caret-down"></span></div>
+    <div class="languages-list">
+    {% for lang in languages %}
+    {% if lang.lng_code != current.lng_code %}<div style="" code="{{lang.lng_code}}" class="item">{{lang.lng_name}}</div>{% endif %}
+    {% endfor %}
+    </div>
+</div>

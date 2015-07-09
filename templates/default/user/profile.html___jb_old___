@@ -1,0 +1,13 @@
+{% extends "layout.tpl" %}
+{% block content %}
+<section class="profile">
+    {% if user %}
+    <div class="user">
+        <div class="photo"><div class="wrapper" style="background-image: url('{{user.photo or ''}}')"></div></div>
+        <div class="name">{{user.firstname or ''}} {{user.lastname or ''}}</div>
+    </div>
+    {% else %}
+    Пользователь не найден...
+    {% endif %}
+</section>
+{% endblock %}

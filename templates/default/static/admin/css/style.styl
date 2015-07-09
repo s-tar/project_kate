@@ -1,0 +1,858 @@
+rounded($r)
+  -border-radius($r);
+-border-radius()
+  if length(arguments)  == 1
+    -webkit-border-radius: arguments;
+    -moz-border-radius: arguments;
+    border-radius: arguments;
+  else
+    if arguments[3] != ''
+      -webkit-border-bottom-left-radius: arguments[3];
+      -moz-border-radius-bottomleft: arguments[3];
+      border-bottom-left-radius: arguments[3];
+    if arguments[2] != ''
+      -webkit-border-bottom-right-radius: arguments[2];
+      -moz-border-radius-bottomright: arguments[2];
+      border-bottom-right-radius: arguments[2];
+    if arguments[0] != ''
+      -webkit-border-top-left-radius: arguments[0];
+      -moz-border-radius-topleft: arguments[0];
+      border-top-left-radius: arguments[0];
+    if arguments[1] != ''
+      -webkit-border-top-right-radius: arguments[1];
+      -moz-border-radius-topright: arguments[1];
+      border-top-right-radius: arguments[1];
+rounded-left($r)
+  -webkit-border-bottom-left-radius: $r;
+  -moz-border-bottom-left-radius: $r;
+  border-bottom-left-radius: $r;
+  -webkit-border-top-left-radius: $r;
+  -moz-border-top-left-radius: $r;
+  border-top-left-radius: $r;
+rounded-right($r)
+  -webkit-border-bottom-right-radius: $r;
+  -moz-border-bottom-right-radius: $r;
+  border-bottom-right-radius: $r;
+  -webkit-border-top-right-radius: $r;
+  -moz-border-top-right-radius: $r;
+  border-top-right-radius: $r;
+-box-shadow($x, $y, $blur, $scale, $color)
+  -webkit-box-shadow: $x $y $blur $scale $color;
+  -moz-box-shadow:    $x $y $blur $scale $color;
+  box-shadow:         $x $y $blur $scale $color;
+*
+  font-family: 'Open Sans', "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  padding : 0px
+  margin : 0px
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+body
+  font-size : 14px
+  background-color : #eee
+  padding-bottom: 50px
+div
+  float : left
+iframe div
+  float : inherit
+a
+  cursor: pointer
+body.loading .content .loading
+  display: block
+.content
+  -border-radius(5px, 5px, 5px, 5px)
+  .loading
+    display: none
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: 99
+    .background
+      position: absolute
+      background: #ffffff
+      opacity: 0.8
+      width: 100%
+      height: 100%
+    .icon
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background: url('/static/img/loading.gif') no-repeat center center
+      background-size: 40px 40px;
+
+.main-wrapper
+  width : 960px
+  float : none
+  margin : auto
+.frame
+  rounded(5px)
+  border: 1px solid #cccccc
+  margin: 10px
+  width: 100%
+  background-color: white
+  min-height: 200px
+.menu-container
+  width: 220px
+  min-height: 0px
+  ul
+    list-style: none
+    width: 100%
+    float:left
+    li
+      width: 100%
+      a
+        display: block
+        height: 100%
+        width: 100%
+        padding: 10px
+        border-bottom: 1px solid #eeeeee
+        &:hover
+          text-decoration: none
+          color: #ffffff
+          background-color: #f98d16
+.content
+  width: 700px
+  //padding: 10px
+.main-header
+  border-bottom : 1px solid #ddd
+  background-color : white
+  min-height : 52px
+  width : 100%
+  .header-login
+    float : right
+    padding : 0px 30px
+    display: none
+    .icon
+      rounded(50%);
+      overflow : hidden
+      margin : 5px 2px
+      cursor : pointer
+      background: #fff
+      img
+        rounded(50%);
+        height : 35px
+a
+  color: #666
+  font-size: 12px
+  text-decoration: none;
+  &:hover
+    color:#444
+    text-decoration: underline;
+//----------------------------- POPUP START ---------------------------------
+.main-popup
+  display: none
+  position: fixed
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  z-index: 999
+  .background
+    position: absolute
+    background-color: #000000
+    opacity: 0.2
+    width: 100%
+    height: 100%
+  .container
+    display: block
+    float: left
+    rounded(5px)
+    -box-shadow(0px, 0px, 10px,0px, rgba(50, 50, 50, 0.5))
+    overflow: hidden
+    z-index: 2
+    position: absolute
+    background-color: #ffffff
+    color: #aaaaaa
+    border: 1px solid #cccccc
+    top: 50%;
+    left: 50%;
+    .popup-header
+      float: left
+      border-bottom: 1px solid #eeeeee
+      //background-color: #666666
+      color: #f98d16
+      //border-top: 7px solid #f98d16
+      //text-transform: uppercase
+      text-align: center
+      min-height: 30px
+      width: 100%
+      .text
+        font-size: 18px
+        padding: 8px 20px
+      &.non-close
+        .close
+          display: none
+        .text
+          text-align: center
+          width: 100%
+      .close
+        float: right
+        cursor: pointer
+        height: 40px
+        width: 40px
+        border-left: 1px solid #eeeeee
+        font-size: 24px
+        padding: 8px
+        &:hover
+          background-color: #f98d16
+          color: white
+
+    .popup-content
+      float: left
+      width: 100%
+      clear: both
+      > .text
+        padding: 20px
+      .buttons
+        clear: both
+        float: left
+        width: 100%
+        padding: 0px 10px
+        white-space: nowrap
+        overflow: hidden
+        .buttons-left
+          float: left
+          display: inline-block
+        .buttons-right
+          float: right
+          display: inline-block
+          input[type=button]
+            display: inline-block
+            margin: 10px
+//----------------------------- POPUP END ---------------------------------
+.frame > .header, .frame-main-header
+  .text, .text a
+    color: #f98d16
+    font-size: 20px
+  .text
+    padding: 7px 10px
+  .back-button
+    a
+      color: #f98d16
+      display: block
+      border-right: 1px solid #eeeeee
+      margin: -10px
+      margin-right: 0px
+      font-size: 30px
+      padding: 18px
+      height: 64px
+  width: 100%
+  padding: 10px
+  margin-bottom: 10px
+  border-bottom: 1px solid #eeeeee
+.category-list, .items-list
+  float: left
+  clear: both
+.list-title
+  width: 100%
+  float: left
+  color: #999999
+  padding: 0px 10px 10px 10px
+  font-size: 1.2em
+
+
+.list .item, .icon-button
+  rounded(5px)
+  border: 1px solid #eeeeee
+  margin: 3px
+  overflow: hidden
+  background-color: white
+  &.new
+    border: 1px dashed #eeeeee
+    white-space: nowrap;
+    .icon
+      background-color: #ffffff
+      border-right: 1px dashed #eeeeee
+
+    .name
+      min-width: 0px
+  a
+    display: block
+    text-decoration: none
+    width: 100%
+    height: 100%
+
+  .icon
+    padding: 11px
+    border-right: 1px solid #eeeeee
+    font-size: 1.2em
+    background-color: #eeeeee
+    width: 40px
+    height: 36px
+    text-align: center
+    background-position: center center
+    background-size: cover
+  .name
+    padding: 0px 10px
+    min-width: 200px
+    display: inline-block
+    vertical-align: middle
+  .edit-buttons
+    opacity: 0
+    float: right
+    .button
+      float: left
+      font-size: 12px
+      color: #666666
+      cursor: pointer
+      &:hover
+        color: #333333
+      .icon
+        background-color: transparent
+        border: none
+        border-left: 1px dashed #eeeeee
+.icon-button
+  color: #999999
+  font-size: 13px
+  cursor: pointer
+  vertical-align: middle
+  &:hover
+    border-color: #dddddd
+    color: #666666
+  .icon
+    vertical-align: middle
+  .name
+    min-width: 0
+.field-wrapper
+  width: 100%
+  position: relative
+  display: inline-block
+.field-edit-buttons
+  opacity: 0
+  position: absolute
+  right: 0
+  top: 0
+  height: 100%
+  padding: 1px 0px 5px
+  .button
+    height: 100%
+    width: 40px
+    float: left
+    font-size: 1em
+    color: #666666
+    cursor: pointer
+    border-left: 1px dashed #eeeeee
+    text-align: center
+    position: relative
+    &:before
+      position: absolute
+      top: 50%
+      left: 50%
+      margin-top: -0.6em
+      margin-left: -0.4em
+    &:hover
+      color: #333333
+    &.visibility:before
+      content: '\f06e'
+    &.visibility.invisible:before
+      content: '\f070'
+
+
+/* ---------------------------------- IMAGE LOADER ---------------------------------------- */
+.image-loader
+  text-align: center
+  cursor: pointer
+  position: relative
+  width: 100%
+  height: 100%
+  float: left
+  overflow: hidden
+  border: 1px dashed #cccccc
+  padding: 5px
+  rounded(5px)
+  .source-wrapper
+    width: 100%
+    height:100%
+    overflow: hidden
+    position: absolute
+  .source
+    rounded(3px)
+    display: none
+    overflow: hidden
+    background-size: cover;
+    background-repeat: no-repeat
+    background-position: center
+    width: 100%
+    height: 100%
+    z-index:1
+  &.loading
+    .source
+      background-image: none !important
+    .no-photo
+      display: none
+    .loading
+      display: block
+  &.has-image
+    border: 1px solid #cccccc
+    .source
+      display: block
+    .loading, .no-photo
+      display: none
+  .no-photo, .loading
+    font-size: 100px
+    color: #cccccc
+    position: absolute;
+    margin: -50px;
+    top: 50%;
+    left: 50%;
+  .loading
+    display:  none
+  input[type=file]
+    cursor: pointer
+    position: absolute
+    left: -50px
+    top: -50px
+    font-size: 0px
+    width: 150%
+    height: 150%
+    opacity: 0
+    z-index: 2
+/* ------------------------------------------------------------------------------- */
+
+table.list
+  border-collapse: separate
+  border-spacing: 0px 3px;
+  thead
+    color: #666666
+    font-size: 12px
+  .item
+    cursor: pointer
+    &:hover td
+      color: #333333
+  td
+    font-size: 12px
+    color: #666666
+    padding: 0px 10px
+    border-color: #eeeeee
+    border-style: solid
+    border-width: 1px 0px 1px 0px
+    border-right-style: dashed
+    &.name
+      min-width: 200px
+    &.icon
+      background-color: #eeeeee
+      padding: 10px;
+      font-size: 1em;
+      width: 40px;
+      text-align: center;
+      background-position: center center;
+      background-size: cover;
+    &:first-child
+      rounded-left(5px)
+      border-left-width: 1px
+    &:last-child
+      rounded-right(5px)
+      border-right-width: 1px
+      border-right-style: solid
+    &.buttons
+      padding: 0px
+  .edit-buttons
+    opacity: 0
+    float: right
+    .button
+      float: left
+      border-left: 1px dashed #eeeeee
+      a
+        width: 100%
+        height: 100%
+        font-size: 14px
+      .icon
+        text-align:center
+        width: 40px
+        padding: 10px 10px
+        background-color: transparent
+        border: none
+.nothing-found
+  color: #666666
+  font-size: 12px
+
+
+
+html, body
+  height:100%
+.footer
+  font-size: 12px
+  color: #444;
+  text-decoration: underline;
+
+  bottom: 0px
+  width: 100%
+  padding: 0px;
+  .copyrights
+    vertical-align: bottom
+    float: left
+    padding: 15px 10px 0px 10px;
+  .design
+    div
+      padding: 5px
+      float: left
+    a
+      float: left
+    float: right
+    padding: 10px;
+  .wish
+    display: none !important;
+
+/* ---------------------------------- TRANSLATOR --------------------------------------- */
+.translator-right-tabs
+  position : absolute
+  left: 1px
+  .tab
+    cursor: pointer
+    z-index: 1
+    /*word-break: break-all;*/
+    width: 19px
+    position: relative
+    margin-top: -20px;
+    overflow: hidden
+    &:first-child
+      margin-top: 0px
+    .title
+      float:left
+      background: #f7f7f7
+      border-right: 1px solid #cccccc
+      width: 100%
+      padding: 5px 0px
+      line-height: 12px
+      font-size: 10px
+      color: #666666
+      text-align: center
+    &.default .title
+      font-weight: normal
+    &:before
+      content: ""
+      display: block;
+      float: left
+      height: 18px
+      width: 100%
+      background-image: url(/static/admin/img/side_tab.png)
+      background-position:  100% 70px
+    &:after
+      content: ""
+      display: block;
+      float: left;
+      height: 18px
+      width: 100%
+      background-image: url(/static/admin/img/side_tab.png)
+      background-position: bottom right
+    &.is-active
+      width: 20px
+      z-index: 30 !important
+      left: -1px
+      .title
+        background: #ffffff
+      &:before
+        background-position:  top right
+      &:after
+        background-position: 100% 89px
+
+.translator-language-selector
+  z-index:99
+  cursor: pointer
+  rounded(5px)
+  float:left
+  border: 1px solid #cccccc
+  color: #666666
+  font-size: 12px
+  position : absolute
+  background: #ffffff
+  .current .arrow
+    font-size: 8px
+    padding: 2px 0px 0px 3px
+  .item
+    padding: 5px
+    clear: both
+    width: 100%
+    float: none;
+  .languages-list
+    width: 100%
+    float: none;
+    border-top: 1px dashed #cccccc
+    display: none
+    clear: both
+    .item:hover
+      background-color: #f98d16
+      color : #ffffff
+/* ------------------------------------ EDITABLE LIST ----------------------------------------- */
+.editable-list
+  border-collapse: separate
+  border-spacing: 0px 3px;
+  thead
+    color: #666666
+    font-size: 12px
+  .item
+    cursor: pointer
+    &:hover td
+      color: #333333
+  td
+    font-size: 12px
+    color: #666666
+    padding: 0px 10px
+    border-color: #eeeeee
+    border-style: solid
+    border-width: 1px 0px 1px 0px
+    border-right-style: dashed
+    &.name
+      min-width: 200px
+    &.icon
+      background-color: #eeeeee
+      padding: 10px;
+      font-size: 1em;
+      width: 40px;
+      text-align: center;
+      background-position: center center;
+      background-size: cover;
+    &:first-child
+      rounded-left(5px)
+      border-left-width: 1px
+    &:last-child
+      rounded-right(5px)
+      border-right-width: 1px
+      border-right-style: solid
+    &.buttons
+      padding: 0px
+  .edit-buttons
+    opacity: 0
+    float: right
+    .button
+      float: left
+      border-left: 1px dashed #eeeeee
+      a
+        width: 100%
+        height: 100%
+        font-size: 14px
+      .icon
+        text-align:center
+        width: 40px
+        padding: 10px 10px
+        background-color: transparent
+        border: none
+  .item
+    td
+      cursor: default
+    input
+      border-color: #FFFFFF
+      padding: 3px 10px
+      margin: 1px 0px;
+      -webkit-transition: border-color 0.5s ease;
+      &:hover
+        border-color: #cccccc
+      &:focus
+        border-color: #f98d16
+    .edit-buttons
+      width: 41px
+      min-height: 1px
+      .button
+        float: right
+    .edit-buttons.save
+      opacity: 1 !important
+      border-right:  1px dashed #eee
+    .edit-buttons.delete
+      border:  none
+    &.new
+      .edit-buttons.delete .button
+        display: none
+
+  .item.template
+    td
+      border-style: dashed
+    .icon
+      background-color: transparent
+      border-right: 1px dashed #eeeeee
+    .edit-buttons.delete .button
+      display: none !important
+  .item.new
+    input
+      border-color: #cccccc
+      &:focus
+        border-color: #f98d16
+
+
+
+
+/* ------------------------------------ ICON LIST ------------------------------------ */
+.icon-list
+  padding: 10px 20px
+  width: 100%
+  float: left
+  list-style: none
+  .item
+    float:left
+    cursor: pointer
+    position: relative
+    padding: 3px
+    border: 1px solid #eeeeee
+    background-color: #ffffff
+    .title
+      color: #666
+      text-align: center
+      font-size: 12px
+      padding: 5px
+      width: 100%
+      white-space: nowrap
+      overflow: hidden
+    .icon
+      width: 100%
+      height: 100%
+      padding: 0px;
+      border: none
+      font-size: 1.2em;
+      background-color: transparent;
+    .mask
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+    .image
+      width: 100%
+      height: 100%
+      background-size: cover
+      background-position: center
+      background-repeat: no-repeat
+      text-align: center
+      rounded(3px)
+      overflow:hidden
+    width: 150px
+    height: 100px
+    margin: 5px
+    rounded(5px)
+    .button .invisible
+      display: none
+    &.invisible
+      .icon
+        opacity: 0.2
+      .button .visible
+        display: none
+      .button .invisible
+        display: block
+    &.new
+      border: 1px dashed #eeeeee
+      .icon
+        opacity: 0.2
+        font-size: 14px
+      &:hover
+        border-color: #cccccc
+        .icon
+          opacity: 0.4
+      .fa
+        font-size: 50px
+        color: #333333
+        padding-top: 22px
+    &.template
+      display: none
+  .buttons
+    display: none
+    position: absolute
+    width: 100%
+    border-top: 1px solid #eeeeee
+    bottom: 0px
+    left: 0px
+    height: 30px
+    color: #666666
+    background-color: white
+    -border-radius('', '', 5px, 5px)
+    overflow: hidden
+    .button
+      width: 50%
+      text-align: center
+      height: 100%
+      padding: 6px 0px
+      &:hover
+        color: #333333
+      &:first-child
+        border-right: 1px solid #eeeeee
+.form.image-form
+  padding-top: 20px
+  .image-loader
+    text-align: center
+    cursor: pointer
+    position: relative
+    width: 300px
+    height: 200px
+    float: left
+    overflow: hidden
+    border: 1px dashed #cccccc
+    padding: 5px
+    rounded(5px)
+    .fa
+      font-size: 100px
+      color: #cccccc
+      position: absolute
+      margin: -50px
+      top: 50%
+      left: 50%
+  .fields
+    width: 50%
+    .submit
+      margin: 0px
+/* ------------------------------------ LIST ------------------------------------ */
+.list
+  .button .invisible
+    display: none
+  .item
+    cursor: pointer
+    font-size: 12px
+    color: #666666
+    &.invisible .change-default
+      display: none
+
+    .change-default.true
+      .invisible
+        display: none
+      .visible
+        display: block
+    .change-default.false
+      .invisible
+        display: block
+      .visible
+        display: none
+    .datetime
+      vertical-align: top
+      display: inline-block
+      width: 120px
+      min-width: inherit
+      border-right: 1px solid #eeeeee
+      height: 36px
+      padding: 10px
+    &.invisible
+      border-color: #f6f6f6
+      .title
+        opacity: 0.2
+      .button .visible
+        display: none
+      .button .invisible
+        display: block
+
+.xdsoft_datetimepicker div
+  float: none
+
+
+.training-form
+  .question
+    ul
+      list-style: decimal
+    li
+      margin-left: 40px
+      .is_true_icon
+        display: none
+        position: absolute
+        top: 3px
+        right: 3px
+        padding: 10px
+        background: white
+        -border-radius(50%)
+
+      &.true
+        input
+          padding-right: 40px
+        .is_true_icon
+          display: block
+        .field-edit-buttons
+          display: none !important
+    &.template
+      display: none

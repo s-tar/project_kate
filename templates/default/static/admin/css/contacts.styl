@@ -1,0 +1,80 @@
+-border-radius($tl, $tr, $br, $bl)
+  if $bl != ''
+    -webkit-border-bottom-left-radius: $bl;
+    -moz-border-radius-bottomleft: $bl;
+    border-bottom-left-radius: $bl;
+  if $br != ''
+    -webkit-border-bottom-right-radius: $br;
+    -moz-border-radius-bottomright: $br;
+    border-bottom-right-radius: $br;
+  if $tl != ''
+    -webkit-border-top-left-radius: $tl;
+    -moz-border-radius-topleft: $tl;
+    border-top-left-radius: $tl;
+  if $tr != ''
+    -webkit-border-top-right-radius: $tr;
+    -moz-border-radius-topright: $tr;
+    border-top-right-radius: $tr;
+.contacts
+  .phone, .email, .address
+    float:left;
+    width: 100%;
+    margin: 2px 0px;
+    position: relative
+  .phone
+    input[name=phone_num]
+      width: 25%
+    input[name=phone_description]
+      width: 74.45%
+  &.form
+    .row
+      float: left;
+      width: 100%
+    input
+      margin-bottom: 4px
+    .delete
+      border-left: 1px dotted #eee;
+      position: absolute;
+      font-size: 19px;
+      padding: 6px;
+      right: 1px;
+      top: -9px;
+      background-color: white;
+      min-width: 30px;
+      color: #666666
+      rounded(2px)
+      -webkit-border-bottom-left-radius: 0px;
+      -moz-border-bottom-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      -webkit-border-top-left-radius: 0px;
+      -moz-border-top-left-radius: 0px;
+      border-yop-left-radius: 0px;
+    .delete:hover {color: white; border-left: 1px solid #eee;background-color:#FF6961}
+    .new .delete
+      display: none
+    .sn
+      .row
+        padding-left: 0px
+        padding-right: 0px
+      .icon
+        padding: 7px 10px
+        font-size: 25px
+        width: 45px
+        height: 40px
+        position: absolute
+        text-align: center
+        color: white
+        -border-radius(3px, 0, 0, 3px)
+      .vk .icon
+        background: #155e8b
+      .facebook .icon
+        background: #3c599f
+      .twitter .icon
+        background: #00acee
+      .google_plus .icon
+        background: #d44132
+      .live_journal .icon
+        background: url('/static/admin/img/live_journal_icon.png') #306599 no-repeat center center
+        background-size: contain
+      input
+        padding-left: 55px

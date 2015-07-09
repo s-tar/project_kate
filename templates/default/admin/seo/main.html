@@ -1,0 +1,38 @@
+{% extends "admin/layout" %}
+{% block content %}
+<div class="header">
+
+    <div class="text">SEO</div>
+
+    <div style="float:right">
+        <div class="icon-button new new-url">
+            <a href="/admin/seo/new">
+                <span class="fa fa-plus-circle icon"></span>
+                <span class="name">Новая ссылка</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div style="padding: 10px 20px">
+    {% if urls|length > 0 %}
+    <div class="list-title">Ссылки</div>
+    <ul class="seo-url-list list">
+    {% for url in urls %}
+        <li class="item" iid="{{url.seou_id}}">
+            <div style="float:left">
+            <a href="/admin/seo/{{url.seou_id}}">
+                <span class="fa fa-link icon"></span>
+                <span class="name">{{url.seou_url}}</span>
+            </a>
+            </div>
+            <div class="edit-buttons" style="float:right">
+                <div class="button"><a class="seo-delete" iid="{{url.seou_id}}" href="#"><span class="fa fa-trash icon"></span></a></div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+    {% else%}
+    <div style="color: #666;font-size: 12px;">Пока ссылок нет...</div>
+    {% endif %}
+</div>
+{% endblock %}

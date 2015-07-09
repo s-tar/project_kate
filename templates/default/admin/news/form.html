@@ -1,0 +1,27 @@
+{% extends "admin/layout" %}
+{% block content %}
+<div class="header">
+    <div class="text">{{'Редактировать новость' if news.id else 'Новая новость'}}</div>
+</div>
+<div style="float:left;padding: 10px 0px">
+    <form class="form ajax ajax_submit" method="post" action="/admin/news/save">
+        <input type="hidden" name="id" value="{{news.id or ''}}"/>
+        <div class="row" style="width: 75%">
+            <div class="title">Заголовок:</div>
+            <input type="text" name="title" value="{{news.t('title', True) or ''}}"/>
+        </div>
+        <div class="row" style="width: 25%">
+            <div class="title">Дата:</div>
+            <input class="calendar" format="d.m.Y H:i" type="text" name="datetime" value="{{(news.t('datetime', True) or datetime.datetime.now()).strftime('%d.%m.%Y %H:%M')}}"/>
+        </div>
+        <div class="row">
+            <div class="title">Текст:</div>
+            <div style="width: 100%"><textarea class="editor" name="text" style="resize:vertical;" rows="15">{{news.t('text', True) or ''}}</textarea></div>
+        </div>
+        <div class="row">
+            <input type="button" value="Отменить" onclick="window.location.href='/admin/news'"/>
+            <input type="button" class="submit" value="Сохранить"/>
+        </div>
+    </form>
+</div>
+{% endblock %}

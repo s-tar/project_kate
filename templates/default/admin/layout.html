@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Панель администратора</title>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/static/admin/css/style.css" type="text/css">
+        <link rel="stylesheet" href="/static/admin/css/user.css" type="text/css">
+        <link rel="stylesheet" href="/static/admin/css/form.css" type="text/css">
+        <link rel="stylesheet" href="/static/admin/css/contacts.css" type="text/css">
+        <link rel="stylesheet" href="/static/admin/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" media="screen" type="text/css" href="/static/admin/css/jquery.datetimepicker.css" />
+        <script src="/static/admin/js/tinymce/tinymce.min.js"></script>
+        <script src="/static/js/lib/jquery-1.10.2.min.js"></script>
+        <script src="/static/js/lib/jquery-ui.js"></script>
+        <script type="text/javascript" src="/static/admin/js/jquery.datetimepicker.js"></script>
+        <script src="/static/admin/js/form.js"></script>
+        <script src="/static/admin/js/main.js"></script>
+        <script src="/static/admin/js/user.js"></script>
+        <script src="/static/admin/js/contacts.js"></script>
+        <script src="/static/admin/js/seo.js"></script>
+        <script src="/static/admin/js/translator.js"></script>
+        <script src="/static/admin/js/language.js"></script>
+        <script src="/static/admin/js/st_file_uploader.js"></script>
+        <script src="/static/js/lib/autosize.min.js"></script>
+    </head>
+    <body>
+    <div style="width:100%;min-height: 100%">
+        {% include 'popup' %}
+        <form id="upload" action="/upload/image" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
+            <input name="image" type="file">
+        </form>
+        <div id="fb-root"></div>
+        <div id="vk-root"></div>
+        <div class="main-header">
+            <div class="main-wrapper">
+                <div style="margin: 0px 10px;width: 100%">
+                    <a href="/admin">
+                        <img src="/static/img/s/icon.png" style="margin: 5px 0px; height: 40px"/>
+                    </a>
+                    <div style="float:right">
+                        <div style="float: left;margin: 7px 0px">{{widget('user.header')}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-wrapper">
+            {% if not request.user.get() %}
+            <div style="margin:auto;padding-top: 100px;float:none;width: 400px">
+                <div class="frame" >
+                    <div class="header"><div class="text">Авторизация</div></div>
+                    <div style="padding: 10px 20px">
+                        {{widget('user.admin.login.form')}}
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                {% if request.user.role('admin') %}
+                <div class="menu-container frame">{% include 'admin/menu' %}</div>
+                <div class="content frame" style="position: relative">
+                    <div class="loading">
+                        <div class="background"></div>
+                        <div class="icon"></div>
+                    </div>
+                    <div style="position:absolute; right: 0px;top: 63px">{{widget('translator.right_tabs', {'for_element': '.main-wrapper > .content'})}}</div>
+                    {% block content %}{% endblock %}
+                </div>
+                {% else %}
+                    <div style="padding: 20px;text-align: center">Доступ запрещен.</div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="footer">
+        <div class="copyrights">© 2014 <span style="font-size: 17px">&lsaquo;s&rsaquo;</span> Engine. Все права защищены.</div>
+        <div class="design">
+            <div>Разработано в</div><a href="http://creoinstant.com/" target="_blank"><img src="/static/img/s/creo.png"></a>
+        </div>
+        <div class="wish" style="display: none"><span>Big thanks to me :) (с) S.Tar</span></div>
+    </div>
+    </body>
+</html>

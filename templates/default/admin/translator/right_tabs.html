@@ -1,0 +1,5 @@
+<div class="translator-tabs translator-right-tabs" for_element="{{for_element}}">
+    {% for lang in languages %}
+    <div style="z-index: {{languages|length - loop.index}}" code="{{lang.lng_code}}" class="tab {{'is-active' if lang.lng_code == current}} {{'default' if lang.lng_default}}"><div class="title">{{lang.lng_code}}</div></div>
+    {% endfor %}
+</div>

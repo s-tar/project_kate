@@ -1,0 +1,50 @@
+{% extends "admin/layout" %}
+{% block content %}
+<div class="header">
+    <div class="text">Языки</div>
+    <div style="float:right">
+        <div class="icon-button new-language new">
+            <a href="">
+            <span class="fa fa-plus-circle icon"></span>
+            <span class="name">Новый язык</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div style="padding: 10px 9px;">
+    <ul route="/admin/language" class="list language-list" style="padding: 0px 10px">
+    {% for lang in languages%}
+        <li class="item {{'invisible' if not lang.lng_active}} {{'default' if lang.lng_default}}" item_id="{{lang.lng_id}}" >
+            <div style="float:left" class="title">
+                <a href="">
+                    <span class="fa fa-language icon"></span>
+                    <span class="name" style="min-width: 0px;border-right: 1px dashed #eee">{{lang.lng_code}}</span>
+                    <span class="name">{{lang.lng_name}}</span>
+                </a>
+            </div>
+            <div class="default-icon">
+                <span class="visible fa fa-star icon"></span>
+            </div>
+            <div class="edit-buttons" style="float:right">
+                <div class="button change-default false">
+                    <span class="visible fa fa-star icon"></span>
+                    <span class="invisible fa fa-star-o icon"></span>
+                </div>
+                <div class="button change-visibility">
+                    <span class="visible fa fa-eye icon"></span>
+                    <span class="invisible fa fa-eye-slash icon"></span>
+                </div>
+                <div class="button delete"><span class="fa fa-trash icon"></span></div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+<style>
+    .translator-right-tabs {display: none}
+    .item .default-icon {display: none; float:right}
+    .item .default-icon .icon{background: none}
+    .item.default .edit-buttons {display: none !important}
+    .item.default .default-icon {display: block}
+</style>
+{% endblock %}

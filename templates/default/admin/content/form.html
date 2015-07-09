@@ -1,0 +1,23 @@
+{% extends "admin/layout" %}
+{% block content %}
+<div class="header">
+    <div class="text">
+        {{content.name}}
+    </div>
+</div>
+<form class="form ajax_submit" method="post" action="/admin/content/save">
+    <input type="hidden" name="id" value="{{content.id}}"/>
+    <input type='hidden' name="translation_language" value="{{translator.get_translation_language().lng_code}}"/>
+
+    <div class="row">
+        <div class="title">Текст:</div>
+        <div style="width: 100%">
+            <textarea class="editor" name="text" rows="15">{{content.t('text', True) or ''}}</textarea>
+        </div>
+    </div>
+    <div class="row">
+        <input type="button" value="Отменить" onclick="window.location.href='/admin/content'"/>
+        <input type="button" class="submit" value="Сохранить"/>
+    </div>
+</form>
+{% endblock %}
